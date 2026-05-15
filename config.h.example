@@ -1,0 +1,168 @@
+// 4006A Dude - Configuration File Template
+// ========================================
+// IMPORTANT: Copy this file to config.h and fill in your values
+// DO NOT commit config.h to version control (add to .gitignore)
+//
+// Setup Instructions:
+// 1. Copy this file: cp config.h.example config.h
+// 2. Fill in all YOUR_* placeholders below with your actual values
+// 3. Upload to your Arduino R4 WiFi
+
+#ifndef CONFIG_H
+#define CONFIG_H
+
+// ============================================================================
+// SECTION 1: WiFi Configuration
+// ============================================================================
+// Get your WiFi network name and password
+const char* SSID = "YOUR_WIFI_NETWORK_NAME";
+const char* PASS = "YOUR_WIFI_PASSWORD";
+
+// ============================================================================
+// SECTION 2: Google Services Configuration
+// ============================================================================
+
+// Geolocation API Key
+// Get your FREE key at: https://console.cloud.google.com/apis/credentials
+// Steps:
+//   1. Go to Google Cloud Console
+//   2. Create new project
+//   3. Enable "Maps JavaScript API"
+//   4. Create API Key (Credentials tab)
+//   5. Copy the key below
+const char* GEOLOCATION_API_KEY = "YOUR_GOOGLE_GEOLOCATION_API_KEY";
+
+// Google Apps Script Webhook (for sending alerts)
+// Create a Google Apps Script at: https://script.google.com
+// Deploy as web app and copy the URL
+const char* RELAY_HOST = "script.google.com";
+const char* REDIRECT_HOST = "script.googleusercontent.com";
+const char* RELAY_PATH = "/macros/s/YOUR_GOOGLE_APPS_SCRIPT_ID/exec";
+
+// Email Alerts via Google Apps Script
+// Configure a Google Apps Script to send emails
+// See: docs/EMAIL_SETUP.md for detailed instructions
+const char* EMAIL_RECIPIENT = "your-email@gmail.com";
+const char* EMAIL_API_ENDPOINT = "https://script.google.com/macros/s/YOUR_EMAIL_SCRIPT_ID/usercache/YOUR_CACHE_ID";
+
+// ============================================================================
+// SECTION 3: Sensor Thresholds
+// ============================================================================
+// Adjust these values based on your environment and sensors
+// Lower values = more sensitive
+// Test with 'c' command in serial monitor for calibration
+
+// Flame Sensor (analog reading 0-1023)
+// Triggers when value FALLS BELOW threshold
+const int THRESHOLD_FLAME = 100;           // Adjust: 0-1023
+const int FLAME_WARNING_THRESHOLD = 150;   // Higher = more sensitive
+const int FLAME_CRITICAL_THRESHOLD = 100;  // Lower = triggers critical
+
+// MQ2 Sensor - Smoke/Gas (analog reading 0-1023)
+// Triggers when value EXCEEDS threshold
+const int THRESHOLD_MQ2 = 700;             // Adjust: 0-1023
+
+// MQ8 Sensor - Hydrogen (analog reading 0-1023)
+// Triggers when value EXCEEDS threshold
+const int THRESHOLD_MQ8 = 400;             // Adjust: 0-1023
+
+// ============================================================================
+// SECTION 4: Hardware Pin Configuration
+// ============================================================================
+// Arduino R4 WiFi Pin Assignment
+const int BUZZER_PIN = 5;           // Buzzer/alarm digital output
+const int LED_INDICATOR_PIN = 6;    // Status LED (optional)
+
+// Optional Sensor Pins (for future expansion)
+const int TEMP_SENSOR_PIN = 7;       // DHT22 temperature (not used yet)
+const int HUMIDITY_SENSOR_PIN = 8;   // DHT22 humidity (not used yet)
+
+// ============================================================================
+// SECTION 5: Buzzer & Audio Configuration
+// ============================================================================
+// Alert tone timing (milliseconds)
+const int BUZZER_BEEP_SHORT = 100;   // Quick beep duration
+const int BUZZER_BEEP_LONG = 500;    // Long beep duration
+const int BUZZER_SILENCE = 200;      // Silence between beeps
+
+// Buzzer patterns:
+//   Pattern 1: Single beep (startup/ok)
+//   Pattern 2: Double beep (warning)
+//   Pattern 3: Rapid beeping (alert/critical)
+//   Pattern 4: Long beep (danger/trend alert)
+
+// ============================================================================
+// SECTION 6: Alert & Storage Configuration
+// ============================================================================
+
+// Alert rate limiting (prevents alert spam)
+// Minimum time between consecutive alerts (milliseconds)
+const unsigned long ALERT_COOLDOWN_MS = 5000;  // 5 seconds
+
+// Alert level definitions (used internally)
+const int ALERT_LEVEL_WARNING = 1;   // Minor threshold breach
+const int ALERT_LEVEL_CRITICAL = 2;  // Major threshold breach
+
+// EEPROM Storage Configuration
+// Alert history stored locally (survives power loss)
+const int MAX_ALERT_HISTORY = 10;    // Store up to 10 alerts
+const int EEPROM_ALERT_ADDR = 0;     // Starting EEPROM address
+const int ALERT_RECORD_SIZE = 20;    // Bytes per alert record
+
+// ============================================================================
+// SECTION 7: Web Server Configuration
+// ============================================================================
+// Built-in HTTP server for web dashboard
+const int WEB_SERVER_PORT = 80;      // Default HTTP port
+
+// Predictive Alert Trend Analysis
+const int ALERT_HISTORY_SAMPLES = 10;              // Sample size
+const int TREND_CHECK_INTERVAL_MS = 60000;        // Check every 60 seconds
+const int CRITICAL_ALERT_THRESHOLD_COUNT = 3;     // 3+ alerts = critical trend
+
+// ============================================================================
+// CONFIGURATION NOTES
+// ============================================================================
+//
+// DEFAULT SENSOR PIN CONNECTIONS (Arduino R4 WiFi):
+//   A0 → Flame Sensor (Analog)
+//   A1 → MQ2 Sensor (Analog)
+//   A2 → MQ8 Sensor (Analog)
+//   Pin 3 → MQ2 Digital Alarm
+//   Pin 4 → MQ8 Digital Alarm
+//   Pin 5 → Buzzer (set BUZZER_PIN to this value)
+//
+// CALIBRATION MODE:
+//   - Use serial command 'c' to enter calibration mode
+//   - System will capture min/max flame sensor values
+//   - Helps fine-tune THRESHOLD_FLAME for your environment
+//
+// TESTING:
+//   - Use serial command 't' to trigger test alert
+//   - Use serial command 'm' to toggle test mode (suppresses sending)
+//   - Use serial command 'd' for quick diagnostics
+//   - Use serial command 's' for full sensor self-check
+//
+// GEOLOCATION:
+//   - Uses WiFi network scanning + Google Geolocation API
+//   - Free tier: 25,000 requests/day
+//   - Accuracy: ±1.2km in urban areas
+//   - Use serial command 'g' to get location
+//
+// EMAIL ALERTS:
+//   - Requires Google Apps Script setup
+//   - See documentation for gmail forwarding setup
+//   - Critical alerts automatically sent when threshold exceeded
+//
+// WEB DASHBOARD:
+//   - Access at: http://YOUR_ARDUINO_IP/
+//   - Available when WiFi is connected
+//   - Remote API endpoints:
+//     * GET / → Dashboard HTML
+//     * GET /?action=csv → Download alert history
+//     * GET /?action=test → Trigger test alert
+//     * GET /?action=clear → Clear alert history
+//
+// ============================================================================
+
+#endif
