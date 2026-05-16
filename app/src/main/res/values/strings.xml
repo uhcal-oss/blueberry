@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Blueberry-Tubitak</string>
+
+    <!-- Navigation -->
+    <string name="nav_dashboard">Gösterge</string>
+    <string name="nav_alerts">Uyarılar</string>
+    <string name="nav_settings">Ayarlar</string>
+    <string name="title_dashboard">Gösterge Paneli</string>
+    <string name="title_alerts">Uyarı Geçmişi</string>
+    <string name="title_settings">Ayarlar</string>
+
+    <!-- Permissions -->
+    <string name="permission_missing_title">Uygulama İzinleri Eksik</string>
+    <string name="permission_missing_body">Acil arama, SMS gönderimi ve konum tespiti için gerekli izinler verilmedi.</string>
+    <string name="permission_grant">İzinleri Ver</string>
+
+    <!-- FAB -->
+    <string name="fab_test_alarm">Test Alarmı</string>
+
+    <!-- Connection Status -->
+    <string name="card_connection_title">Bağlantı Durumu</string>
+    <string name="connection_arduino">Durum: Arduino Dinleniyor</string>
+    <string name="connection_fcm">FCM: Bağlı</string>
+    <string name="connection_last_seen">Son bağlantı: %1$s</string>
+    <string name="connection_never">Henüz bağlantı yok</string>
+
+    <!-- System Health -->
+    <string name="card_health_title">İstasyon Sağlık &amp; Diagnostik</string>
+    <string name="sensor_flame">Alev Sensörü (A0)</string>
+    <string name="sensor_mq2">MQ-2 Duman Sensörü (A1)</string>
+    <string name="sensor_mq7">MQ-7 Karbon Monoksit (A2)</string>
+    <string name="sensor_wifi">Wi-Fi Bağlantısı: Aktif</string>
+    <string name="status_normal">Normal</string>
+    <string name="status_warning">Uyarı</string>
+    <string name="status_critical">Kritik</string>
+
+    <!-- Alerts -->
+    <string name="alerts_count">%1$d uyarı</string>
+    <string name="alerts_clear_all">Tümünü Temizle</string>
+    <string name="alerts_empty_title">Son uyarı yok. Sistem sakin.</string>
+    <string name="alerts_empty_body">Tüm sensörler normal aralıkta çalışıyor.</string>
+    <string name="alerts_open_map">🗺 Haritada Gör</string>
+    <string name="alerts_delete">Sil</string>
+
+    <!-- Station Profile -->
+    <string name="card_station_title">İstasyon Detayları</string>
+    <string name="station_name">İstasyon: İzmir / Blueberry-1</string>
+    <string name="station_sector">Bölge: Çam Ormanı Alfa</string>
+    <string name="station_sms_active">Otonom SMS aktif</string>
+    <string name="dialog_set_number_title">Acil Numarayı Ayarla</string>
+    <string name="dialog_phone_label">Telefon Numarası</string>
+    <string name="action_save">Kaydet</string>
+    <string name="action_cancel">İptal</string>
+
+    <!-- Dark Mode -->
+    <string name="setting_dark_mode">Karanlık Mod</string>
+    <string name="setting_dark_mode_desc">Uygulamanın tema tercihini değiştir</string>
+
+    <!-- Countdown -->
+    <string name="card_countdown_title">Geri Sayım Süresi</string>
+    <string name="countdown_desc">Acil durum SMS\'i göndermeden önce beklenecek süre</string>
+
+    <!-- Debug -->
+    <string name="card_debug_title">Hata Ayıklama Bilgisi</string>
+    <string name="debug_fetching">Alınıyor…</string>
+    <string name="debug_unknown">Bilinmiyor</string>
+    <string name="debug_failed">Alınamadı</string>
+
+    <!-- About -->
+    <string name="card_about_title">Hakkında</string>
+    <string name="about_version">Versiyon 1.0.0</string>
+    <string name="about_project">TÜBİTAK Otonom Orman Yangını Tespit Projesi</string>
+    <string name="about_station">Blueberry-1 İstasyonu — İzmir, Türkiye</string>
+    <string name="about_description">Arduino + Firebase Bulut Mesajlaşma mimarisi üzerine inşa edilmiş otonom orman yangını erken uyarı sistemi.</string>
+
+    <!-- Relative time -->
+    <string name="time_just_now">Az önce</string>
+    <string name="time_minutes_ago">%1$d dk önce</string>
+    <string name="time_hours_ago">%1$d sa önce</string>
+
+    <!-- Emergency Action -->
+    <string name="emergency_alert_title">🚨 ACİL DURUM TESPİT EDİLDİ 🚨</string>
+    <string name="emergency_sms_hint">saniye içinde %1$s numarasına otonom SMS gönderilecek.</string>
+    <string name="emergency_accept">Kabul Et (Otonom SMS Gönder)</string>
+    <string name="emergency_takeover">Devral (Ben Konuşacağım)</string>
+    <string name="emergency_deny">Reddet (İptal Et)</string>
+    <string name="emergency_taken_over_title">📞 Çağrıyı Devraldınız</string>
+    <string name="emergency_taken_over_body">Lütfen yangın ihbar operatörüne aşağıdaki bilgileri okuyun:</string>
+    <string name="emergency_automated_title">📩 Otonom SMS Gönderildi</string>
+    <string name="emergency_automated_body">Aşağıdaki bilgiler acil durum servislerine kısa mesaj (SMS) olarak iletildi.</string>
+    <string name="emergency_stop">Otonom Sistemi Durdur ve Kapat</string>
+    <string name="emergency_open_map">🗺 Haritada Göster</string>
+
+    <!-- Sensor detail labels -->
+    <string name="detail_status">DURUM</string>
+    <string name="detail_coordinates">KOORDİNATLAR</string>
+    <string name="detail_telemetry">SENSÖR TELEMETRİSİ</string>
+    <string name="detail_flame">Alev (A0)</string>
+    <string name="detail_mq2">Duman MQ-2</string>
+    <string name="detail_mq7">Karbon Monoksit MQ-7</string>
+
+    <!-- Notification -->
+    <string name="notification_emergency_title">🚨 ACİL DURUM TESPİTİ</string>
+    <string name="notification_emergency_body">Kullanıcı müdahalesi bekleniyor…</string>
+</resources>
