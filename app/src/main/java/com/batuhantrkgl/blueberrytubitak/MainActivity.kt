@@ -630,7 +630,7 @@ fun AboutCard() {
             )
             Spacer(modifier = Modifier.height(4.dp))
             Text(
-                "Blueberry-1 İstasyonu — İzmir, Türkiye"
+                "Blueberry-1 İstasyonu — İzmir, Türkiye",
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -892,7 +892,7 @@ fun StationProfileCard() {
             }
             Spacer(modifier = Modifier.height(16.dp))
             Text(
-                "İstasyon: İzmir / Blueberry-1"
+                "İstasyon: İzmir / Blueberry-1",
                 fontWeight = FontWeight.Bold,
                 style = MaterialTheme.typography.bodyLarge
             )
